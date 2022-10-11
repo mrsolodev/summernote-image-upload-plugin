@@ -33,7 +33,7 @@ if (isset($_FILES["file"]["type"]))
     {
 
         // Generate a unique name for the directory
-        $unique_photo_name = sha1(time() . mt_rand(0, 99999));
+        $unique_photo_name = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $photo["name"])));
 
         $handle = new Upload($photo);
         $photo_mime_type = $handle->file_src_mime;
